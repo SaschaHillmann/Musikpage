@@ -1,0 +1,29 @@
+<% content_for :punchline do -%>
+<div style="color:white;"><h1>New album</h1>
+ Select an Genre or click new Genre </div>
+<% end %>
+
+
+
+<%= form_for @album, url: wizard_path, :method => :put  do |f| %>
+
+  <div class="field">
+    <h2><%= f.label :artist %></h2>
+    <%= @artist.name%>
+</div>
+   
+<div class='genres'>
+  <h2>Genre</h2>    
+<div id="link_genre">
+	<%= f.collection_select( :genre_id , @genres, :id, :name )%>
+  <%= link_to("new Genre", new_album_genre_path(@album), remote: true) %>
+<br />
+<%= link_to_submit image_tag("guitar.gif",  :size => "100x50") %>
+<%= link_to image_tag("back-arrow.png", :size => "40x40"), :back %>
+</div>
+<% end %>
+
+
+
+<div id="form_genre"></div>
+<br />

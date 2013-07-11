@@ -1,0 +1,21 @@
+<%= form_for(@genre,  remote: true) do |f| %>
+  <% if @genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@genre.errors.count, "error") %> prohibited this genre from being saved:</h2>
+
+      <ul>
+      <% @genre.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+<%= f.submit %>
+  </div>
+<% end %>
+<%= link_to image_tag("back-arrow.png", :size => "40x40"), :back %>

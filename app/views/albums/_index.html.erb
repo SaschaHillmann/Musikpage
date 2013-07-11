@@ -1,0 +1,31 @@
+<h2><%= link_to 'New Album', new_album_path %></h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Artist</th>
+    <th>Genre</th>
+    <th>Image</th>
+    <!-- <th></th> -->
+  </tr>
+
+<% @albums.each do |album| %>
+  <tr>
+    <td><%= album.name %></td>
+    <% if album.genre_id.blank? %><td></td>
+    <% else %>
+    <td><%= Artist.find(album.artist_id).name %></td>
+    <% end %>
+    <% if album.genre_id.blank? %><td></td>
+    <% else %>
+    <td><%# album.genre_id%><%= Genre.find(album.genre_id).name %></td>    
+    <% end %>    
+    <% if album.cover.blank? %><td></td>
+    <% else %>
+    <td><%= image_tag("#{album.cover}", :size => "30x30") %></td>    
+    <% end %>
+    <!-- <td><%# link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>  -->
+  </tr>
+<% end %>
+</table>
+
+<br />

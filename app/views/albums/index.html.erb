@@ -1,0 +1,30 @@
+<div id="slider">
+<ul>
+<% @covers.each do |ci| %>
+<li><table><td>
+    <%= image_tag("#{ci.cover}", :size => "200x200") %>
+</td><td>
+    <h1><%= ci.name %></h1><br />
+
+        <h2><%= ci.artist.name %></h2><br />
+        <% ci.tracks.each do |tr| %>
+        <%= tr.name %> <br />
+        <% end %>
+</td></table>
+    </li>
+<% end %>
+</ul>
+</div>
+<div id="left"> goLeft </div>
+<div id="right"> goRight </div>
+<ul id="numbers"> 
+<li></li>
+</ul>
+<br /><div class="divider">&nbsp;</div>
+<% unless session[:user_id].blank? %>
+<%= render 'index' %>
+<% end %>
+
+
+
+

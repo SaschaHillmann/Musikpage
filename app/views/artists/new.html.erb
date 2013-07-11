@@ -1,0 +1,26 @@
+<% content_for :punchline do -%>
+<div style="color:white;"><h1>New album</h1>
+ Create a new Artist </div>
+<% end %>
+
+<%= form_for(@artist) do |f| %>
+  <% if @artist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
+
+      <ul>
+      <% @artist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  	<h2>New Artist</h2>
+    <%= f.text_field :name %>
+  </div>
+<%= link_to_submit image_tag("guitar.gif",  :size => "100x50") %>
+
+<%= link_to image_tag("back-arrow.png", :size => "40x40"), :back %>
+<% end %>

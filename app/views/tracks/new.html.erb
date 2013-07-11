@@ -1,0 +1,5 @@
+<h1>New track</h1>
+<% fields_for 'album[track_attributes][]', @track do |track_form| %>
+ <%= render :partial => '/track/form', :locals => { :f => track_form, :track => @track } %>
+<% end %>
+<%= link_to 'Back', tracks_path %>

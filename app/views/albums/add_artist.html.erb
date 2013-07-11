@@ -1,0 +1,17 @@
+<% content_for :punchline do -%>
+<div style="color:white;"><h1>New album</h1>
+ Select an Artist or click new Artist</div>
+<% end %>
+
+
+<%= render layout: 'form' do |f| %>
+
+  <div class="field">
+    <%= f.label :artist_id %><br />
+    <%= f.collection_select( :artist_id , @artists, :id, :name )%>
+  </div>    
+
+<% end %>
+
+<%= link_to "new Artist", new_artists_path %>
+<%= link_to image_tag("back-arrow.png", :size => "40x40"), :back %>

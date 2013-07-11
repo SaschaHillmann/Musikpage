@@ -1,0 +1,9 @@
+--- 
+index_path: index.html
+partials: 
+  menu: //div[@class='nav']/text()
+content_path: .lowerright:text
+image_dir: images
+no_sass: false
+javascript_dir: javascripts
+stylesheet_dir: ""

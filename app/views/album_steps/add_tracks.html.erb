@@ -1,0 +1,33 @@
+<% content_for :punchline do -%>
+<div style="color:white;"><h1>New album</h1>
+ Add your Tracks </div>
+<% end %>
+
+  <div class="field">
+    <h2>Artist</h2>
+    <%= @album.artist.name%>
+</div>
+<div class="field">
+    <h2>Genre</h2>
+    <%= @genre.name %>
+</div>
+  <div class="field">
+    <h2>Name</h2>
+    <%= @album.name %>
+  </div>
+
+<div id="link_track">
+  <h2><%= link_to("new Track", new_album_track_path(@album), remote: true) %></h2>
+</div>  
+<div id="form_track"></div>
+<br />
+<div class='tracks'>
+  <h2>Tracks</h2>
+  <div id="start_track">
+    <% @album.tracks.reverse.each do |track| %>
+      <%= render(:partial => "track", :object => track) %>
+    <% end %>
+  </div>
+</div>
+<%= link_to image_tag("guitar.gif",  :size => "100x50"), next_wizard_path %>
+<%= link_to image_tag("back-arrow.png", :size => "40x40"), previous_wizard_path %>

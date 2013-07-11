@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The Music Website</title>
+<meta content="text/html;charset=iso-8859-1" http-equiv="Content-Type" />
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <% if current_page?('/') or current_page?('/albums') %>
+    <%= javascript_include_tag "application.js" %>
+  <%= javascript_include_tag "jquerymin.js" %>
+  <%= javascript_include_tag "hashslider_minified.js" %>
+  <% else %>
+  <%= javascript_include_tag "application.js" %>
+  <% end %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body>
+<div id="container">
+  <!-- Start of Page Title -->
+  <div id="page_title">
+    <h1><span>My Music Website</span></h1>
+  </div>
+  <!-- End of Page Title -->
+  <div id="header_image"><span>&nbsp;</span></div>
+  <!-- Start of Page Header -->
+  <div id="header_container_left">
+    <div id="header_container_right">
+      <div id="header_container">
+        <div id="page_header">
+          <div id="header_hidden">&nbsp;</div>
+          <!-- Start of Header Punchline -->
+          <div id="header_punchline">
+            <h3><span></span></h3>
+          </div>
+          <!-- End of Header Punchline -->
+          <!-- Start of Header Navigation Menu -->
+          <div id="header_menu">
+            <ul>
+              <li id="menu_1"><strong><%= link_to 'Home', albums_path %></strong></a></li>
+              <li id="menu_2"><strong><%= link_to 'Genre', genres_path %></strong></a></li>
+              <li id="menu_3"><strong><%= link_to 'Artist', artists_path %></strong></a></li>
+              <li id="menu_4"><strong><%= link_to 'Account', users_path %></strong></a></li>
+              <!-- <li id="menu_5"><a href="http://all-free-download.com/free-website-templates/"><strong>Contacts</strong></a></li> -->
+            </ul>
+          </div>
+          <!-- End of Page Header : Menu -->
+          <!-- Start of Header Links -->
+          <div id="header_links">
+            <h3>
+              <% if current_user %>
+                Logged in as <%= current_user.email %>.
+                <%= link_to "Log Out", logout_path %>
+              <% else %>
+                <%= link_to "Sign Up", signup_path %> or
+                <%= link_to "Log In", login_path %>
+              <% end %>
+            </h3>
+            <%= yield(:punchline)%>
+          </div>
+          <!-- End of Header Links -->
+          <div class="clearthis">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Page Header -->
+  <!-- Start of Main Content -->
+  <div id="maincontent_container">
+    <div id="maincontent">
+
+        </div><%= yield %>
+
+      <div class="divider">&nbsp;</div>
+
+    </div>
+  </div>
+  <!-- End of Main Content -->
+  <!-- Start of Page Footer -->
+  <div id="page_footer"> Powered by Sascha Hillmann</a> </div>
+  <!-- End of Page Footer -->
+</div>
+<div align="center">This template  downloaded form <a href="http://all-free-download.com/free-website-templates/">free website templates</a></div></body>
+</html>

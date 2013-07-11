@@ -1,0 +1,22 @@
+<% content_for :punchline do -%>
+<div style="color:white;"><h1>New album</h1>
+ Name your Album </div>
+<% end %>
+
+<%= form_for @album, url: wizard_path, :multipart => true do |f| %>
+
+  <div class="field">
+    <h2><%= f.label :artist %></h2>
+    <%= @album.artist.name%>
+</div>
+<div class="field">
+    <h2><%= f.label :genre %></h2>
+    <%= @genre.name %>
+</div>
+  <div class="field">
+    <h2><%= f.label :name %></h2>
+    <%= f.text_field :name %>
+  </div>
+<%= link_to_submit image_tag("guitar.gif",  :size => "100x50") %>
+<%= link_to image_tag("back-arrow.png", :size => "40x40"), previous_wizard_path %>
+<% end %>

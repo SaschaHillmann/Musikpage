@@ -1,0 +1,30 @@
+<% content_for :punchline do -%>
+<div style="color:white;"><h1>New album</h1>
+ Select an Artist or click new Artist </div>
+<% end %>
+
+
+<%= form_for(@album) do |f| %>
+  <% if @album.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+
+      <ul>
+      <% @album.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <h2><%= f.label :artist_id %></h2>
+    <%= f.collection_select( :artist_id , @artists, :id, :name )%>
+    <%= link_to "new Artist", new_artist_path %>
+  </div> 
+  <div class="field"> 
+    <%= f.hidden_field(:user_id, :value => session[:user_id]) %>
+ </div>
+<%= link_to_submit image_tag("guitar.gif",  :size => "100x50") %>
+<% end %>
+<%= link_to image_tag("back-arrow.png", :size => "40x40"), :back %>
